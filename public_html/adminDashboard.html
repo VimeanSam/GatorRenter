@@ -1,0 +1,201 @@
+<html lang="en">
+<title>My Listings</title>  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="stylesheets/listings.css"></link>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #3a027a !important;
+}
+</style>
+    <body>
+    <%- include('base.html'); %>
+    <br><br> 
+    <h1 style="text-align: center; font-weight: 600">Listings to Review</h1>
+    <!-- search results -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div class='list-group w3-animate-opacity'>
+            <% for (var i = 0; i < listings.length; i++) { %>
+                <div class="testimonial">
+                    <img src="https://res.cloudinary.com/dxlc7nvb8/image/upload/v1582187192/csc648Spr19/<%= listings[i].media %>" alt="" width="190px" height="140px"/>
+                    <h3 style="font-weight: 600;"><a href="/dashboard/<%= listings[i].ID %>"><%= listings[i].title %> </a></h3>
+                    <h5>Posted by: <%= listings[i].postedBy %></h5>
+                    <% if(listings[i].aptNumber > 0) { %>
+                        <h5><%= listings[i].address.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %> #<%= listings[i].aptNumber %>, <%= listings[i].city.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')%>, <%= listings[i].state %>, <%= listings[i].zip %></h5>
+                    <% } else {%>
+                        <h5><%= listings[i].address.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %>, <%= listings[i].city.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')%>, <%= listings[i].state %>, <%= listings[i].zip %></h5>
+                    <% } %>
+                    <span class="editIcon" id="<%= listings[i].ID %>" onclick="edit(this)">&#9998;</span>
+                    <br>
+                </div>
+            <% } %>
+        </div> 
+    </div>
+    <input type="hidden" id="curr_post" />
+    <div class="modal fade" id="edits" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header" style="background-color: #7269ef; color: white;">
+                <h5 class="modal-title" id="name"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" style="color: white;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="">
+                <h4>Property Information</h4>
+                <label>Address<span style="color: red;"> * </span></label>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+                <label>City (CA cities only)<span style="color: red;"> * </span></label>
+                <input type="text" id="city" name="city" placeholder="City" required>
+                <label>Zip Code<span style="color: red;"> * </span></label>
+                <input type="text" id="zip" name="zip" placeholder="Zip" required>
+                <label for="inputAddress2">Apt/Suite/Unit</label>
+                <input type="number" class="form-control" id="unit" placeholder="" name="unit">
+                <br>
+                <h4>Price</h4>
+                <label>Price per month<span style="color: red;"> * </span></label>
+                <input id="price" name="price" class="form-control" placeholder="" type="number" min="0" required>
+                <br>
+                <h4>Neighborhood</h4>
+                <label>Select SF Neighborhood<span style="color: red;"> * </span></label>
+                <select id="district" class="form-control" name="district">
+                    <option value="" hidden/>
+                    <option value="Inner Richmond">Inner Richmond</option>
+                    <option value="Central Richmond">Central Richmond</option>
+                    <option value="Outer Richmond">Outer Richmond</option>
+                    <option value="Marina">Marina</option>
+                    <option value="Cow Hollow">Cow Hollow</option>
+                    <option value="Pacific Heights">Pacific Heights</option>
+                    <option value="Chinatown">Chinatown</option>
+                    <option value="Nob Hill">Nob Hill</option>
+                    <option value="North Beach">North Beach</option>
+                    <option value="Russian Hill">Russian Hill</option>
+                    <option value="Central Sunset">Central Sunset</option>
+                    <option value="Outer Sunset">Outer Sunset</option>
+                    <option value="Outer Parkside">Outer Parkside</option>
+                    <option value="Haight Ashbury">Haight Ashbury</option>
+                    <option value="Hayes Valley">Hayes Valley</option>
+                    <option value="West Addition">West Addition</option>
+                    <option value="SOMA">SOMA</option>
+                    <option value="South Beach">South Beach</option>
+                    <option value="ParkMerced">ParkMerced</option>
+                    <option value="Twin Peaks">Twin Peaks</option>
+                    <option value="Lakeshore">Lakeshore</option>
+                    <option value="Castro">Castro</option>
+                    <option value="Glen Park">Glen Park</option>
+                    <option value="Noe Valley">Noe Valley</option>
+                    <option value="Mission">Mission</option>
+                    <option value="Bernal Heights">Bernal Heights</option>
+                    <option value="Bay View">Bay View</option>
+                    <option value="Hunters Point">Hunters Point</option>
+                    <option value="Potrero Hill">Potrero Hill</option>
+                    <option value="Excelsior">Excelsior</option>
+                    <option value="Ocean View">Ocean View</option>
+                    <option value="Ingleside">Ingleside</option>
+                    <option value="Vistacion Valley">Vistacion Valley</option>
+                </select>
+                <br>
+                <h4>Features</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="type">Rental Type<span style="color: red;"> * </span></label>
+                        <div >                           
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input propertyType" type="radio" name="type" id="apartment" value="apartment">
+                                <label class="form-check-label" for="inlineRadio1">Apartment</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input propertyType" type="radio" name="type" id="condo" value="condo">
+                                <label class="form-check-label" for="inlineRadio1">Condo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input propertyType" type="radio" name="type" id="house" value="house">
+                                <label class="form-check-label" for="inlineRadio1">House</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input propertyType" type="radio" name="type" id="room" value="room">
+                                <label class="form-check-label" for="inlineRadio1">Single Room</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Size<span style="color: red;"> * </span></label>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="numbeds">Number Bedrooms</label>
+                        <select class="form-control" id="numbeds" name="bed">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="numbaths">Number Bathrooms</label>
+                        <select class="form-control" id="numbaths" name="bath">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sqaurefeet">Squarefeet</label>
+                        <div class="input-group">
+                            <input id="squarefeet" name="size" class="form-control" placeholder="" type="number" min="0" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text">sq ft</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Ammenities</label>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input amenities" type="checkbox" id="Pets Allowed" name="pets">
+                        <label class="form-check-label" for="inlineCheckbox1">Pets Allowed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input amenities" type="checkbox" id="Furnished" name="furnished">
+                        <label class="form-check-label amenities" for="inlineCheckbox2">Furnished</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input amenities" type="checkbox" id="Air Conditioning" name="ac">
+                        <label class="form-check-label" for="inlineCheckbox3">Air Conditioning</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input amenities" type="checkbox" id="Heating" name="heat">
+                        <label class="form-check-label" for="inlineCheckbox4">Heating</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input amenities" type="checkbox" id="No Smoking" name="nosmoke">
+                        <label class="form-check-label" for="inlineCheckbox5">No Smoking</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="Wheel Chair Access" name="wheelchair">
+                        <label class="form-check-label" for="inlineCheckbox6">Wheelchair Access</label>
+                    </div>
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                        Selected all that apply
+                    </small>
+                </div>
+                <h4>Descriptions</h4>
+                <textarea class="form-control" name="description" id="description" rows="4" placeholder="Tell us about your rental"></textarea>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: #7269ef;" class="btn btn-secondary" data-dismiss="modal" onclick="update()">Apply Changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="/scripts/editPosts.js"></script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <title>GatorRentor</title>   
+    <head>
+        <!-- Required meta tags -->
+        <link rel="icon" href="/Images/gatorrentor.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="stylesheets/loginForm.css"></link>
+        <title>GatorRentor</title>
+    </head>
+    <body>
+      <%- include('base.html'); %>
+      <%- include('errors.html'); %>
+      <br>
+      <h1 style="text-Align: center; font-Weight: 600">Sign Up</h1>
+      <h4 style="text-Align: center">Students or Landlords, sign up Today!</h4>
+      <br>
+      <div class="login-page w3-animate-zoom">
+        <div class="form">
+          <form class="register-form" action="/user/signup" method="post">
+            <h5>I am a: </h5>
+            <label class="radio-inline">
+              <input id="studentRadio" type="radio" name="privilege" value="Student" onchange="checkOption(this)" required>Student
+            </label>
+            <label class="radio-inline">
+              <input id="landLordRadio" type="radio" name="privilege" value="LandLord" onchange="checkOption(this)" required>Landlord
+            </label>
+            <br>
+            <input type="text" placeholder="First Name" name="firstname" required/>
+            <input type="text" placeholder="Last Name" name="lastname" required/>
+            <input type="text" placeholder="Email" name="email" required/>
+            <input type="text" placeholder="Username" name="username" required/>
+            <input type="password" placeholder="Password" name="password" required/>
+            <input id="org" type="text" placeholder="Organization" name="organization"/>
+            <button type="submit">Sign up</button>
+            <p class="message">Already registered? <a href="/login">Log In</a></p>
+          </form>
+        </div>
+      </div>
+    </body>
+    <script>
+      document.getElementById("org").style.display = 'none';
+      function checkOption(name){
+        var option = document.getElementById(name.id).value;
+        //console.log(option);
+        if(option === "LandLord"){
+          document.getElementById("org").style.display = 'block';
+        }else{
+          document.getElementById("org").style.display = 'none';
+        }
+      }
+    </script>
+</html>

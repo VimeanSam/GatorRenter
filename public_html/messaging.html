@@ -1,0 +1,28 @@
+<html>
+    <link rel="icon" href="/Images/gatorrentor.png">
+    <link rel="stylesheet" href="stylesheets/listings.css"></link>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <body>
+        <%- include('base.html'); %>
+        <br>
+        <div style=" display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h1 style="font-weight: 600">Messaging</h1> 
+            <h5>Your inbox</h5>
+            <div class='list-group w3-animate-opacity'>
+                <% for (var i = 0; i < conversations.length; i++) { %>
+                    <div class="testimonial">
+                        <img src="Images/default.jpg" alt="" style="width: 90px" />
+                        <h3 id="<%= conversations[i].msgID %>" style="color: #007bff; cursor: pointer; font-weight: 600" onclick="viewMessage(this)"><%= conversations[i].subject %></h3>
+                        <% if (user.username !== conversations[i].sender) { %>
+                            <h5>From: <b><%= conversations[i].sender %></b></h5>
+                        <% } else if(user.username !== conversations[i].recipient) { %>
+                            <h5>To: <b><%= conversations[i].recipient %></b></h5>
+                        <% } %>
+                        <p><%= conversations[i].body %></p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </body>
+    <script src="scripts/messages.js"></script>
+</html>

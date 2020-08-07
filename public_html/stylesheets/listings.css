@@ -1,0 +1,209 @@
+body{
+  background-color: #f7f7ff !important;
+}
+
+.listing-item {
+	display: flex; 
+  padding: 2px;
+  width: 100%;
+}
+
+.listing-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+}
+
+.listing-content p {
+    flex: 1 0 auto;
+    margin-top: 15px;
+    word-wrap: break-word;
+}
+
+.listingContainer {
+    margin: 0 auto; 
+    max-width: 75em;
+    line-height: 1.3;
+}
+
+.listing {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardImg {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 10px;
+}
+
+.list-group{
+  height: 500px;
+  max-height: 500px;
+  width: 50%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: solid 1px gray;
+}
+
+.testimonial {
+  border-bottom: 2px solid #ccc;
+  background-color: #eee;
+  padding: 16px;
+  text-align: left;
+}
+
+.testimonial::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.testimonial img {
+  float: left;
+  margin-right: 20px;
+}
+
+.testimonial span {
+  font-size: 20px;
+}
+
+.chatbox {
+  border: 2px solid #ccc;
+  background-color: #bcb8ec;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #6257f3;
+  color: white
+}
+
+.chatbox::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.chatbox img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.chatbox img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.chatbox img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.searchFilter{
+  display: table; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editIcon{
+  float: right;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.editIcon:hover{
+  color: #007bff;
+  cursor: pointer;
+}
+
+
+@media all and (min-width: 50em) {
+    .listing-item {
+      width: 50%;
+    }
+  }
+  
+@media all and (min-width: 70em) {
+    .listing-item {
+      width: 33.33%;
+    }
+    .cardImg {
+      width: 100%;
+      height: 180px;
+      margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 950px){
+  .list-group{
+    width: 80%;
+  }
+  .cardImg {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .list-group{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .CarouselIMG {
+    height: 30vh;
+  }
+  .cardImg {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .testimonial {
+      text-align: center;
+  }
+  .testimonial img {
+    margin: auto;
+    float: none;
+    display: block;
+  } 
+}

@@ -1,0 +1,72 @@
+<html>
+    <link rel="icon" href="/Images/gatorrentor.png">
+    <link rel="stylesheet" href="/stylesheets/listings.css"></link>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <body>
+        <%- include('base.html'); %>
+        <br>
+        <% if(conversations.length > 0) { %>
+        <div style=" display: flex; flex-direction: column; align-items: center">
+            <h1 id="msgTopic" style="font-weight: 600"><%= conversations[0].subject %></h1>
+            <div class='list-group w3-animate-opacity'>
+                <% for (var i = 0; i < conversations.length; i++) { %>
+                    <% if(conversations[i].sender === user.username) { %>
+                        <div class="chatbox darker">
+                            <img src="/Images/default.jpg" class="right" alt="" style="width: 90px"/>
+                            <h4><b>You</b></h4>
+                            <p><%= conversations[i].body %></p>
+                        </div>
+                    <% } else { %>
+                        <div class="chatbox">
+                            <img src="/Images/default.jpg" alt="" style="width: 90px"/>
+                            <h4><b><%= conversations[i].sender %></b></h4>
+                            <p><%= conversations[i].body %></p>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>    
+            <br>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" style="background-color: #7269ef; border: 1px solid #7269ef" data-toggle="modal" data-target="#exampleModal">Reply</button>
+            </div>    
+            <br>    
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text" name="body" required></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary" style="background-color: #7269ef; border: 1px solid #7269ef" data-dismiss="modal" onclick="sendMessage()">Send Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="curr_user" value="<%= user.username %>" />
+            <% if(user.username === conversations[0].sender){ %>
+                <input type="hidden" id="person" value="<%= conversations[0].recipient %>" />
+            <% } else { %>
+                <input type="hidden" id="person" value="<%= conversations[0].sender %>" />
+            <% } %>
+          <% } else { %>
+            <br>
+            <h3 style="text-align: center; font-weight: 600">Invalid Endpoint</h3>
+        <% } %>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="/scripts/messages.js"></script>
+</html>

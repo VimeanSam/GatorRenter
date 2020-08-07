@@ -1,0 +1,259 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="/Images/gatorrentor.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="stylesheets/styles.css"></link>
+<style>
+    h1 {font-size: 64px;}
+    h2 {font-size: 48px;}
+    h3 {font-size: 36px;}
+    h4 {font-size: 24px;}
+    h5 {font-size: 20px;}
+    h6 {font-size: 18px;}
+    html, body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+</style>
+<body>
+<%- include('base.html'); %>
+<div class="container border rounded w3-animate-opacity" style="width: 90%; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; margin-top: 20px; margin-bottom: 20px; background-color: white;">
+    <h1 style="color: #7269ef; font-weight: 600;">List Your Rental</h1>
+    <span class="warning2"> * </span>
+    <span>required field</span>
+    <hr/>
+    <form action="/listings/upload" method="post" enctype="multipart/form-data">                
+        <legend style="color: #a6a2ea">Details</legend>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="title">Post Title<span class="warning2"> * </span></label>
+                <input id="title" name="title" type="text" placeholder="" class="form-control" required="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="type">Rental Type<span class="warning2"> * </span></label>
+                <div >                           
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="type-0" value="apartment" checked="checked">
+                        <label class="form-check-label" for="inlineRadio1">Apartment</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="type-1" value="condo">
+                        <label class="form-check-label" for="inlineRadio1">Condo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="type-2" value="house">
+                        <label class="form-check-label" for="inlineRadio1">House</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="type-3" value="room">
+                        <label class="form-check-label" for="inlineRadio1">Single Room</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="inputAddress">Street Address<span class="warning2"> * </span></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputAddress2">Apt/Suite/Unit</label>
+                <input type="number" class="form-control" id="inputAddress2" placeholder="" name="unit">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City<span class="warning2"> * </span></label>
+                <input type="text" class="form-control" id="inputCity" value="San Francisco" name="city" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State<span class="warning2"> * </span></label>
+                <select id="inputState" class="form-control" name="USstate" required>
+                    <option value="CA" selected>California</option>
+                    <option disabled>--No other states available--</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip<span class="warning2"> * </span></label>
+                <input type="number" class="form-control" id="inputZip" name="zip" required>
+            </div>
+        </div>
+        <legend style="color: #a6a2ea">Districts</legend>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState">District<span class="warning2"> * </span></label>
+                <select id="inputState" class="form-control" name="district" required>
+                    <option value="" hidden/>
+                    <option value="Inner Richmond">Inner Richmond</option>
+                    <option value="Central Richmond">Central Richmond</option>
+                    <option value="Outer Richmond">Outer Richmond</option>
+                    <option value="Marina">Marina</option>
+                    <option value="Cow Hollow">Cow Hollow</option>
+                    <option value="Pacific Heights">Pacific Heights</option>
+                    <option value="Chinatown">Chinatown</option>
+                    <option value="Nob Hill">Nob Hill</option>
+                    <option value="North Beach">North Beach</option>
+                    <option value="Russian Hill">Russian Hill</option>
+                    <option value="Central Sunset">Central Sunset</option>
+                    <option value="Outer Sunset">Outer Sunset</option>
+                    <option value="Outer Parkside">Outer Parkside</option>
+                    <option value="Haight Ashbury">Haight Ashbury</option>
+                    <option value="Hayes Valley">Hayes Valley</option>
+                    <option value="West Addition">West Addition</option>
+                    <option value="SOMA">SOMA</option>
+                    <option value="South Beach">South Beach</option>
+                    <option value="ParkMerced">ParkMerced</option>
+                    <option value="Twin Peaks">Twin Peaks</option>
+                    <option value="Lakeshore">Lakeshore</option>
+                    <option value="Castro">Castro</option>
+                    <option value="Glen Park">Glen Park</option>
+                    <option value="Noe Valley">Noe Valley</option>
+                    <option value="Mission">Mission</option>
+                    <option value="Bernal Heights">Bernal Heights</option>
+                    <option value="Bay View">Bay View</option>
+                    <option value="Hunters Point">Hunters Point</option>
+                    <option value="Potrero Hill">Potrero Hill</option>
+                    <option value="Excelsior">Excelsior</option>
+                    <option value="Ocean View">Ocean View</option>
+                    <option value="Ingleside">Ingleside</option>
+                    <option value="Vistacion Valley">Vistacion Valley</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="rentprice">Rent Price<span class="warning2"> * </span></label>
+                <div class="input-group">
+                    <input id="rentprice" name="price" class="form-control" placeholder="" type="number" min="0" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">$/month</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="leaselength">Lease Length<span class="warning2"> * </span></label>
+                <div class="input-group">
+                    <input id="leaselength" name="leaseLength" class="form-control" placeholder="" type="number" min="0" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">months</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="dateavailable">Date Available<span class="warning2"> * </span></label>
+                <div class="input-group">
+                    <input id="dateavailable" name="dateavailable" class="form-control" placeholder="placeholder" type="date" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="numbeds">Number Bedrooms<span class="warning2"> * </span></label>
+                <select class="form-control" id="numbeds" name="bed">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="numbaths">Number Bathrooms<span class="warning2"> * </span></label>
+                <select class="form-control" id="numbaths" name="bath">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="sqaurefeet">Squarefeet<span class="warning2"> * </span></label>
+                <div class="input-group">
+                    <input id="squarefeet" name="size" class="form-control" placeholder="" type="number" min="0" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">sq ft</span>
+                    </div>
+                </div>
+            </div>
+        </div>            
+        <legend style="color: #a6a2ea">Photos</legend>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Photos<span class="warning2"> * </span></label>
+                <div class="custom-file">
+                    <input type="file" accept="image/*" class="custom-file-input" id="customFile" name="file" multiple required/>
+                    <label class="custom-file-label" for="customFile">Choose image</label>
+                </div>                       
+            </div>
+        </div>
+        <legend style="color: #a6a2ea">Description</legend>
+        <div class="form-group">
+            <textarea class="form-control" name="description" id="description" rows="4" placeholder="Tell us about your rental"></textarea>
+        </div>
+        <legend style="color: #a6a2ea">Features and Amenities</legend>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="parking">Parking Type</label>
+                <select class="form-control" name="parking" id="parking" required>
+                    <option value="" selected>Select one</option>
+                    <option value="Garage-Private">Garage-Private</option>
+                    <option value="Garage-Shared">Garage-Shared</option>
+                    <option value="Street Parking Available">Street Parking Available</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="laundry">Laundry Type</label>
+                <select class="form-control" name="laundry" id="laundry" required>
+                    <option value="" selected>Select one</option>
+                    <option value="In Unit Hookup">In Unit Hookups</option>
+                    <option value="In Unit Washer/Dryer">In Unit Washer/Dryer</option>                            
+                    <option value="On Site (Shared)">On Site (Shared)</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4"></div>
+        </div>             
+        <div class="form-group">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="pets">
+                <label class="form-check-label" for="inlineCheckbox1">Pets Allowed</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="furnished">
+                <label class="form-check-label" for="inlineCheckbox2">Furnished</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="ac">
+                <label class="form-check-label" for="inlineCheckbox3">Air Conditioning</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="heat">
+                <label class="form-check-label" for="inlineCheckbox4">Heating</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="nosmoke">
+                <label class="form-check-label" for="inlineCheckbox5">No Smoking</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="wheelchair">
+                <label class="form-check-label" for="inlineCheckbox6">Wheelchair Access</label>
+            </div>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Selected all that apply
+            </small>
+        </div>
+        <hr/>
+        <div style="text-align: center;">
+            <button class="btn btn-primary" type="submit" style="background-color: #7269ef; border: 1px solid #7269ef">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>

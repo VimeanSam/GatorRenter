@@ -1,0 +1,165 @@
+<html lang="en">
+<link rel="icon" href="/Images/gatorrentor.png">
+<title>SearchResults</title>  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/listings.css"></link>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        color: #fff;
+        background-color: #7269ef !important;
+    }
+    #map {
+        height: 600px; 
+        width: 100%;  
+    }
+</style>
+    <body>
+    <%- include('base.html'); %>
+    <br> 
+    <h1 style="text-align: center; font-weight: 600"><%= listings.length %> results found</h1>
+    <input type="hidden" id="results" value="<%= listings.length %>" />
+    <hr>
+    <div class="container">
+        <form action="/search/searchResults" method="post" class="searchFilter">
+        <div class="mb-3 input-group">
+            <input placeholder="Search city or zip code" aria-label="search" aria-describedby="basic-addon2" class="form-control" name="searchQuery">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary" style="background-color: #7269ef; border: 1px solid #7269ef;">Search</button>
+            </div>
+        </div>
+        </form>
+        <form action="/filter/filtering" method="post" class="form-inline">
+        <input type="hidden" id="qry" value="<%= query %>" name="query"></input>
+          <div class="form-group form-inline">
+            <label class="my-1 mr-2" for="price">Price Range</label>
+            <select class="custom-select my-1 mr-sm-2" id="price" name="price">
+                <option value="" />
+                <option value="500" <%= (typeof body != 'undefined' && body.price === '500')? 'selected': '' %>>Below $500</option>
+                <option value="500-1000" <%= (typeof body != 'undefined' && body.price === '500-1000')? 'selected': '' %>>$500-$1000</option>
+                <option value="1000-1500" <%= (typeof body != 'undefined' && body.price === '1000-1500')? 'selected': '' %>>$1000-$1500</option>
+                <option value="1500-2000" <%= (typeof body != 'undefined' && body.price === '1500-2000')? 'selected': '' %>>$1500-$2000</option>
+                <option value="2000-2500" <%= (typeof body != 'undefined' && body.price === '2000-2500')? 'selected': '' %>>$2000-$2500</option>
+                <option value="2500-3000" <%= (typeof body != 'undefined' && body.price === '2500-3000')? 'selected': '' %>>$2500-$3000</option>
+                <option value="3000" <%= (typeof body != 'undefined' && body.price === '3000')? 'selected': '' %>>Above $3000</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="type">Type</label>
+            <select class="custom-select my-1 mr-sm-2" id="type" name="type">
+                <option value="" />
+                <option value="Apartment" <%= (typeof body != 'undefined' && body.type === 'Apartment')? 'selected': '' %>>Apartment</option>
+                <option value="House" <%= (typeof body != 'undefined' && body.type === 'House')? 'selected': '' %>>House</option>
+                <option value="Condo" <%= (typeof body != 'undefined' && body.type === 'Condo')? 'selected': '' %>>Condo</option>
+                <option value="Room" <%= (typeof body != 'undefined' && body.type === 'Room')? 'selected': '' %>>Room</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="bed">Bed</label>
+            <select class="custom-select my-1 mr-sm-2" id="bed" name="bed">
+                <option value="" />
+                <option value="1" <%= (typeof body != 'undefined' && body.bed === '1')? 'selected': '' %>>1</option>
+                <option value="2" <%= (typeof body != 'undefined' && body.bed === '2')? 'selected': '' %>>2</option>
+                <option value="3" <%= (typeof body != 'undefined' && body.bed === '3')? 'selected': '' %>>3</option>
+                <option value="4" <%= (typeof body != 'undefined' && body.bed === '4')? 'selected': '' %>>4</option>
+                <option value="5" <%= (typeof body != 'undefined' && body.bed === '5')? 'selected': '' %>>5+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="bath">Bath</label>
+            <select class="custom-select my-1 mr-sm-2" id="bath" name="bath">
+                <option value="" />
+                <option value="1" <%= (typeof body != 'undefined' && body.bath === '1')? 'selected': '' %>>1</option>
+                <option value="2" <%= (typeof body != 'undefined' && body.bath === '2')? 'selected': '' %>>2</option>
+                <option value="3" <%= (typeof body != 'undefined' && body.bath === '3')? 'selected': '' %>>3</option>
+                <option value="4" <%= (typeof body != 'undefined' && body.bath === '4')? 'selected': '' %>>4+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="distance">Distance from Campus</label>
+            <select class="custom-select my-1 mr-sm-2" id="distance" name="distance">
+                <option value="" />
+                <option value="1" <%= (typeof body != 'undefined' && body.distance === '1')? 'selected': '' %>>Less than 1 miles</option>
+                <option value="1-4" <%= (typeof body != 'undefined' && body.distance === '1-4')? 'selected': '' %>>1-4 miles away</option>
+                <option value="4-8" <%= (typeof body != 'undefined' && body.distance === '4-8')? 'selected': '' %>>4-8 miles away </option>
+                <option value="8" <%= (typeof body != 'undefined' && body.distance === '8')? 'selected': '' %>>More than 8 miles</option>
+            </select>
+          </div>
+            <div class="container" style="margin-top: 15px; text-align: center;">
+                <div class="row justify-content-md-center">
+                  <div class="col-md-auto">
+                    <button class="btn btn-primary" style="background-color: #7269ef; border: 1px solid #7269ef; vertical-align: top;" type="submit">Filter</button>
+                  </div>
+                </div>        
+              </div>
+          <br>
+        </form>
+      </div>
+      <hr>
+    <!-- search results -->
+    <div class="container border rounded" style="padding: 0; text-align: center;">
+        <!-- Nav pills -->
+        <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#list">List View</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#map">Map View</a>
+            </li>
+        </ul>
+        <div class="tab-content w3-animate-opacity" >
+            <div class="tab-pane container active" id="list" style="text-align: center;">
+                <br>
+                <div class="listingContainer" style="text-align: center; margin-right: 30px;">
+                    <ul class="listing">
+                        <% for (var i = listings.length-1; i >= 0; i--) { %>
+                        <li class="listing-item">
+                            <div class="listing-content" style="border: 1px solid lightgray; transition: 0.3s;">
+                                <img id="cardImg<%= i %>" class="cardImg" src="https://res.cloudinary.com/dxlc7nvb8/image/upload/v1582187192/csc648Spr19/<%= listings[i].media %>" alt=""/>
+                                <h4 style="font-weight: 600;"><a id="title<%= i %>" href="/homedetails/<%= listings[i].ID %>"><%= listings[i].title %></a></h4>
+                                <h5 id="ptype<%= i %>" style="text-align: center"><b><%= listings[i].type.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %></b></h5>
+                                <h5 id="price<%= i %>" style="text-align: center"><b>$<%= listings[i].price %></b>/months</h5>
+                                <h6 id="info<%= i %>" style="text-align: center"><b><%= listings[i].bed %></b> beds | <b><%= listings[i].bath %></b> baths | <b><%= listings[i].size %></b> sqft</h6>
+                                <% if(listings[i].aptNumber > 0) { %>
+                                    <h6 style="text-align: center"><%= listings[i].address.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %> #<%= listings[i].aptNumber %>, <%= listings[i].city.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')%>, <%= listings[i].state %>, <%= listings[i].zip %></h6>
+                                <% } else {%>
+                                    <h6 style="text-align: center"><%= listings[i].address.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %>, <%= listings[i].city.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')%>, <%= listings[i].state %>, <%= listings[i].zip %></h6>
+                                <% } %>
+                                <div id="id<%= i %>" style="display: none;">
+                                    <%= listings[i].ID %>
+                                </div>
+                                <div id="address<%= i %>" style="display: none;">
+                                    <%= listings[i].address.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') %>, <%= listings[i].city.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')%>, <%= listings[i].state %>, <%= listings[i].zip %>
+                                </div>
+                                <div id="lat<%= i %>" style="display: none;">
+                                    <%= listings[i].lat %>
+                                </div>
+                                <div id="lon<%= i %>" style="display: none;">
+                                    <%= listings[i].lon %>
+                                </div>
+                                <h6 style="text-align: center"><b><a href="/districts#<%= listings[i].district %>" style="text-decoration: none"><%= listings[i].district %></a></b></h6>
+                                <h6 style="text-align: center"><b><%= listings[i].distance %></b> mile(s) from SFSU</h6>
+                                <br>
+                            </div>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane container" id="map" style="text-align: center;">
+                <div id="map"></div>
+                <script src="/scripts/mapSearch.js"></script>
+                <!--Load the API from the specified URL
+                * The async attribute allows the browser to render the page while the API loads
+                * The key parameter will contain your own API key (which is not needed for this tutorial)
+                * The callback parameter executes the initMap() function
+                -->
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBNjrb6RxkSfQDRg5N-frWt3FZOlcNfWI&callback=initMap"></script>
+            </div>
+        </div>    
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <title>GatorRentor</title>   
+    <head>
+        <!-- Required meta tags -->
+        <link rel="icon" href="/Images/gatorrentor.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/styles.css"></link>
+        <title>GatorRentor</title>
+    </head>
+    <body>    
+        <div class="header">
+            <h5>SFSU Software Engineering Project CSC 648-848 Spring 2019. For Demonstration Only </h5>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #7269ef">
+            <img src="/Images/gatorrentor.png" width="60px" height="60px"></img>
+            <span style="margin-left: 10px;"><a class="navbar-brand" href="/">GatorRenter</a></span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="/districts"  style="margin-right: 10px; color: white">Districts</a>
+                </li>
+                <% if(!user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"  style="margin-right: 10px; color: white">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup" style="margin-right: 10px; color: white">SignUp</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/messages" style="margin-right: 10px; color: white">Messages</a>
+                    </li>
+                <% if(user.privilege == "LandLord") { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mylistings" style="margin-right: 10px; color: white">My Listings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/postListings" style="margin-right: 10px; color: white">Post Listings</a>
+                        </li>
+                <% } %>
+                <% if(user.privilege == "Administrator") { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard" style="margin-right: 10px; color: white">Review Post</a>
+                        </li>
+                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link" style="margin-right: 10px; text-decoration: none; color: lightgray"> Signed in as: <%= user.username %></a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <form action="/user/logout" method="post">
+                            <button type="submit" class="btn btn-outline-light">Log Out</button>
+                        </form>
+                    </li>
+                <% } %>
+            </ul>
+          </div>
+          </nav>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <title>GatorRentor</title>   
+    <head>
+        <!-- Required meta tags -->
+        <link rel="icon" href="/Images/gatorrentor.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="/stylesheets/loginForm.css"></link>
+        <title>GatorRentor</title>
+    </head>
+    <body>
+      <%- include('base.html'); %>
+      <%- include('errors.html'); %>
+      <br>
+      <h1 style="text-Align: center; font-Weight: 600">Log In</h1>
+      <br>
+      <div class="login-page w3-animate-zoom">
+        <div class="form" style="width: 360px;">
+          <form class="login-form" action="/user/login" method="post">
+            <input type="text" placeholder="Username" name="username" required/>
+            <input type="password" placeholder="Password" name="password" required/>
+            <button type="submit">login</button>
+            <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+          </form>
+        </div>
+      </div>
+    </body>
+</html>

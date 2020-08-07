@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Explore District</title>
+        <link rel="icon" href="/Images/gatorrentor.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/districts.css"></link>
+    </head>
+    <body onload="showPopUp()">
+        <%- include('base.html'); %>
+        <h2 id="title" style="margin-top: 25px">Explore Districts</h2>
+        <br>
+        <div class="responsive">
+            <h4 id="title">NorthWest</h4>
+            <div class="gallery">
+                <a id="Inner Richmond" onclick="test(this)">
+                    <img src="/Images/Inner Richmond.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Inner Richmond" style="text-align: center; padding: 15px;" onclick="test(this)">Inner Richmond</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Central Richmond" onclick="test(this)">
+                    <img src="/Images/Central Richmond.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Central Richmond" style="text-align: center; padding: 15px;" onclick="test(this)">Central Richmond</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Outer Richmond" onclick="test(this)">
+                    <img src="/Images/Outer Richmond.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Outer Richmond" style="text-align: center; padding: 15px;" onclick="test(this)">Outer Richmond</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">North</h4>
+            <div class="gallery">
+                <a id="Marina" onclick="test(this)">
+                    <img src="/Images/Marina.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Marina" style="text-align: center; padding: 15px;" onclick="test(this)">Marina</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Cow Hollow" onclick="test(this)">
+                    <img src="/Images/Cow Hollow.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Cow Hollow" style="text-align: center; padding: 15px;" onclick="test(this)">Cow Hollow</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Pacific Heights" onclick="test(this)">
+                    <img src="/Images/Pacific Heights.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Pacific Heights" style="text-align: center; padding: 15px;" onclick="test(this)">Pacific Heights</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">NorthEast</h4>
+            <div class="gallery">
+                <a id="Chinatown" onclick="test(this)">
+                    <img src="/Images/Chinatown.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Chinatown" style="text-align: center; padding: 15px;" onclick="test(this)">Chinatown</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Nob Hill" onclick="test(this)">
+                    <img src="/Images/Nob Hill.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Nob Hill" style="text-align: center; padding: 15px;" onclick="test(this)">Nob Hill</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="North Beach" onclick="test(this)">
+                    <img src="/Images/North Beach.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="North Beach" style="text-align: center; padding: 15px;" onclick="test(this)">North Beach</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Russian Hill" onclick="test(this)">
+                    <img src="/Images/Russian Hill.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Russian Hill" style="text-align: center; padding: 15px;" onclick="test(this)">Russian Hill</div>
+                </div>
+            </div>          
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">Central West</h4>
+            <div class="gallery">
+                <a id="Central Sunset" onclick="test(this)">
+                    <img src="/Images/Central Sunset.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Central Sunset" style="text-align: center; padding: 15px;" onclick="test(this)">Central Sunset</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Outer Sunset" onclick="test(this)">
+                    <img src="/Images/Outer Sunset.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Outer Sunset" style="text-align: center; padding: 15px;" onclick="test(this)">Outer Sunset</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Outer Parkside" onclick="test(this)">
+                    <img src="/Images/Outer Parkside.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Outer Parkside" style="text-align: center; padding: 15px;" onclick="test(this)">Outer Parkside</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">Central</h4>
+            <div class="gallery">
+                <a id="Haight Ashbury" onclick="test(this)">
+                    <img src="/Images/Haight Ashbury.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Haight Ashbury" style="text-align: center; padding: 15px;" onclick="test(this)">Haight Ashbury</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Hayes Valley" onclick="test(this)">
+                    <img src="/Images/Hayes Valley.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Hayes Valley" style="text-align: center; padding: 15px;" onclick="test(this)">Hayes Valley</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="West Addition" onclick="test(this)">
+                    <img src="/Images/West Addition.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="West Addition" style="text-align: center; padding: 15px;" onclick="test(this)">West Addition</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">East</h4>
+            <div class="gallery">
+                <a id="SOMA" onclick="test(this)">
+                    <img src="/Images/SOMA.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="SOMA" style="text-align: center; padding: 15px;" onclick="test(this)">SOMA</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="South Beach" onclick="test(this)">
+                    <img src="/Images/South Beach.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="South Beach" style="text-align: center; padding: 15px;" onclick="test(this)">South Beach</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">SouthWest</h4>
+            <div class="gallery">
+                <a id="ParkMerced" onclick="test(this)">
+                    <img src="/Images/ParkMerced.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="ParkMerced" style="text-align: center; padding: 15px;" onclick="test(this)">ParkMerced</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Twin Peaks" onclick="test(this)">
+                    <img src="/Images/Twin Peaks.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Twin Peaks" style="text-align: center; padding: 15px;" onclick="test(this)">Twin Peaks</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Lakeshore" onclick="test(this)">
+                    <img src="/Images/Lakeshore.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Lakeshore" style="text-align: center; padding: 15px;" onclick="test(this)">Lakeshore</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">West</h4>
+            <div class="gallery">
+                <a id="Castro" onclick="test(this)">
+                    <img src="/Images/Castro.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Castro" style="text-align: center; padding: 15px;" onclick="test(this)">Castro</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Glen Park" onclick="test(this)">
+                    <img src="/Images/Glen Park.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Glen Park" style="text-align: center; padding: 15px;" onclick="test(this)">Glen Park</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Noe Valley" onclick="test(this)">
+                    <img src="/Images/Noe Valley.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Noe Valley" style="text-align: center; padding: 15px;" onclick="test(this)">Noe Valley</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">SouthEast</h4>
+            <div class="gallery">
+                <a id="Mission" onclick="test(this)">
+                    <img src="/Images/Mission.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Mission" style="text-align: center; padding: 15px;" onclick="test(this)">Mission</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Bernal Heights" onclick="test(this)">
+                    <img src="/Images/Bernal Heights.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Bernal Heights" style="text-align: center; padding: 15px;" onclick="test(this)">Bernal Heights</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">Central East</h4>
+            <div class="gallery">
+                <a id="Bay View" onclick="test(this)">
+                    <img src="/Images/Bay View.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Bay View" style="text-align: center; padding: 15px;" onclick="test(this)">Bay View</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Hunters Point" onclick="test(this)">
+                    <img src="/Images/Hunters Point.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Hunters Point" style="text-align: center; padding: 15px;" onclick="test(this)">Hunters Point</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Potrero Hill" onclick="test(this)">
+                    <img src="/Images/Potrero Hill.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Potrero Hill" style="text-align: center; padding: 15px;" onclick="test(this)">Potrero Hill</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="responsive">
+            <h4 id="title">South</h4>
+            <div class="gallery">
+                <a id="Excelsior" onclick="test(this)">
+                    <img src="/Images/Excelsior.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Excelsior" style="text-align: center; padding: 15px;" onclick="test(this)">Excelsior</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Ocean View" onclick="test(this)">
+                    <img src="/Images/Ocean View.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Ocean View" style="text-align: center; padding: 15px;" onclick="test(this)">Ocean View</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Ingleside" onclick="test(this)">
+                    <img src="/Images/Ingleside.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Ingleside" style="text-align: center; padding: 15px;" onclick="test(this)">Ingleside</div>
+                </div>
+            </div>
+            <div class="gallery">
+                <a id="Vistacion Valley" onclick="test(this)">
+                    <img src="/Images/Vistacion Valley.jpg" alt="" width="800" height="300">
+                </a>
+                <div id="tab">
+                    <div id="Vistacion Valley" style="text-align: center; padding: 15px;" onclick="test(this)">Vistacion Valley</div>
+                </div>
+            </div>
+        </div>   
+        <br>
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header" style="background-color: #7269ef; color: white;">
+                    <h5 class="modal-title" id="named"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white;">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="descr"></p>
+                    <b>Great for: </b><span id="pro"></span>
+                    <br>
+                    <b>Not Great for: </b><span id="con"></span>
+                    <b><p id="distance"></p></b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <script src="/scripts/district.js"></script>
+    </body>
+</html>
